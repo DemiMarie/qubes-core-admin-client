@@ -846,7 +846,7 @@ class QubesLocal(QubesBase):
         kwargs.setdefault('stderr', subprocess.PIPE)
         proc = subprocess.Popen(
             [qubesadmin.config.QREXEC_CLIENT] + qrexec_opts + [
-                '{}:QUBESRPC {} dom0'.format(user, service)], **kwargs)
+                '{}:QUBESRPC {}{} dom0'.format(user, service, '' if '+' in service else '+')], **kwargs)
         return proc
 
 
